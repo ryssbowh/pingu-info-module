@@ -1,0 +1,22 @@
+{
+    "name": "Info",
+    "alias": "info",
+    "description": "Displays Informations about the site/server",
+    "keywords": [],
+    "core": 0,
+    "order": 10,
+    "providers": [
+        "Pingu\\Info\\Providers\\InfoServiceProvider",
+        "Pingu\\Info\\Providers\\ProvidersServiceProvider",
+        "Pingu\\Info\\Providers\\ConsoleServiceProvider",
+        "Matriphe\\Larinfo\\LarinfoServiceProvider"
+    ],
+    "aliases": {
+        "Infos": "Pingu\\Infos\\Facades\\Infos",
+        "Larinfo": "Matriphe\\Larinfo\\LarinfoFacade"
+    },
+    "files": [
+        "functions.php"
+    ],
+    "requires": []
+}

@@ -1,0 +1,29 @@
+{
+    "name": "pingu/info-module",
+    "description": "",
+    "type" : "asgard-module",
+    "authors": [
+        {
+            "name": "Boris Blondin",
+            "email": "blondin.boris@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pingu\\Info\\Providers\\InfoServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "require": {
+        "matriphe/larinfo": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pingu\\Info\\": ""
+        }
+    }
+}
