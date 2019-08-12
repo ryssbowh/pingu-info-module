@@ -15,14 +15,14 @@ class S2019_08_11_203653549341_InstallInfo extends MigratableSeeder
      */
     public function run(): void
     {
-        $admin = Menu::findByName('admin');
-        $perm = Permission::create(['name' => 'view infos']);
+        $admin = Menu::findByName('admin-menu');
 
-        Permission::create(['name' => 'view server infos']);
-        Permission::create(['name' => 'view site infos']);
-        Permission::create(['name' => 'view database infos']);
-        Permission::create(['name' => 'view php infos']);
-        Permission::create(['name' => 'view about you infos']);
+        $perm = Permission::create(['name' => 'view infos', 'section' => 'Info']);
+        Permission::create(['name' => 'view server infos', 'section' => 'Info']);
+        Permission::create(['name' => 'view site infos', 'section' => 'Info']);
+        Permission::create(['name' => 'view database infos', 'section' => 'Info']);
+        Permission::create(['name' => 'view php infos', 'section' => 'Info']);
+        Permission::create(['name' => 'view about you infos', 'section' => 'Info']);
         
         $menuItem = MenuItem::create([
             'name' => 'Info',
@@ -39,6 +39,26 @@ class S2019_08_11_203653549341_InstallInfo extends MigratableSeeder
      */
     public function down(): void
     {
-        // Remove your data
+        if($perm = Permission::where(['name' => 'view infos'])->first()){
+            $perm->delete();
+        }
+        if($perm = Permission::where(['name' => 'view server infos'])->first()){
+            $perm->delete();
+        }
+        if($perm = Permission::where(['name' => 'view site infos'])->first()){
+            $perm->delete();
+        }
+        if($perm = Permission::where(['name' => 'view database infos'])->first()){
+            $perm->delete();
+        }
+        if($perm = Permission::where(['name' => 'view php infos'])->first()){
+            $perm->delete();
+        }
+        if($perm = Permission::where(['name' => 'view about you infos'])->first()){
+            $perm->delete();
+        }
+        if($item = MenuItem::where('machineName', 'admin-menu.info')->first()){
+            $item->delete();
+        }
     }
 }
