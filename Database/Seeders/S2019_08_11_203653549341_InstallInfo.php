@@ -15,7 +15,7 @@ class S2019_08_11_203653549341_InstallInfo extends MigratableSeeder
      */
     public function run(): void
     {
-        $admin = Menu::findByName('admin-menu');
+        $admin = Menu::findByMachineName('admin-menu');
 
         $perm = Permission::create(['name' => 'view infos', 'section' => 'Info']);
         Permission::create(['name' => 'view server infos', 'section' => 'Info']);

@@ -21,7 +21,8 @@ abstract class InfoProvider
 	public function render()
 	{
 		return view('info::provider')->with([
-			'infos' => $this->infos()
+			'infos' => $this->infos(),
+			'slug' => $this::slug()
 		])->render();
 	}
 }
