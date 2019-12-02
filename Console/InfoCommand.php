@@ -49,7 +49,10 @@ class InfoCommand extends Command
         }
     }
 
-    protected function printError($slug)
+    /**
+     * @param string $slug
+     */
+    protected function printError(string $slug)
     {
         $this->error("Unable to print infos for $slug");
     }
@@ -57,7 +60,7 @@ class InfoCommand extends Command
     /**
      * Prints an info title
      * 
-     * @param  string $title
+     * @param string $title
      */
     protected function printTitle(string $title)
     {
@@ -67,9 +70,9 @@ class InfoCommand extends Command
     /**
      * Prints one line of info
      * 
-     * @param  string $title
-     * @param  string $info
-     * @param  int    $spaces
+     * @param string $title
+     * @param string $info
+     * @param int    $spaces
      */
     protected function printLine(string $title, string $info, int $spaces)
     {
@@ -79,16 +82,15 @@ class InfoCommand extends Command
     /**
      * Print an array of info
      * 
-     * @param  array       $infos
-     * @param  int|integer $spaces
+     * @param array       $infos
+     * @param int|integer $spaces
      */
     protected function printInfo(array $infos, int $spaces = 0)
     {
-        foreach($infos as $name => $info){
-            if(is_array($info)){
+        foreach ($infos as $name => $info) {
+            if (is_array($info)) {
                 $this->printInfo($info, $spaces + 4);
-            }
-            else{
+            } else {
                 $this->printLine($name, $info, $spaces);
             }
         }
@@ -101,7 +103,7 @@ class InfoCommand extends Command
      */
     protected function printInfos(array $infos)
     {
-        foreach($infos as $info){
+        foreach ($infos as $info) {
             $this->printTitle($info['title']);
             $this->printInfo($info['infos']);
         }
@@ -114,7 +116,7 @@ class InfoCommand extends Command
      */
     protected function getOptions()
     {
-        foreach(\Infos::getProviderSlugs() as $slug){
+        foreach (\Infos::getProviderSlugs() as $slug) {
             $options[] = [$slug, null, InputOption::VALUE_NONE, '', null];
         }
         return $options;

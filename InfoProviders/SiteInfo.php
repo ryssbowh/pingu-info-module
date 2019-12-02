@@ -7,17 +7,26 @@ use Pingu\User\Entities\User;
 
 class SiteInfo extends InfoProvider
 {
-    public static function slug()
+    /**
+     * @inheritDoc
+     */
+    public static function slug(): string
     {
         return 'info.site';
     }
 
-    public static function title()
+    /**
+     * @inheritDoc
+     */
+    public static function title(): string
     {
         return config('app.name');
     }
 
-    public function infos()
+    /**
+     * @inheritDoc
+     */
+    public function infos(): array
     {   
         return [
             'Installed' => pingu_installed_time(),
@@ -25,7 +34,10 @@ class SiteInfo extends InfoProvider
         ];
     }
 
-    public function permission()
+    /**
+     * @inheritDoc
+     */
+    public function permission(): string
     {
         return 'view site infos';
     }

@@ -6,23 +6,35 @@ use Pingu\Info\Support\InfoProvider;
 
 class DatabaseInfo extends InfoProvider
 {
-	public static function slug()
-	{
-		return 'info.database';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function slug(): string
+    {
+        return 'info.database';
+    }
 
-	public static function title()
-	{
-		return 'Database';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function title(): string
+    {
+        return 'Database';
+    }
 
-	public function infos()
-	{
-		return \Larinfo::getDatabaseInfo();
-	}
+    /**
+     * @inheritDoc
+     */
+    public function infos(): array
+    {
+        return \Larinfo::getDatabaseInfo();
+    }
 
-	public function permission()
-	{
-		return 'view database infos';
-	}
+    /**
+     * @inheritDoc
+     */
+    public function permission(): string
+    {
+        return 'view database infos';
+    }
 }

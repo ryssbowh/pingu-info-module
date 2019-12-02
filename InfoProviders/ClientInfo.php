@@ -6,23 +6,35 @@ use Pingu\Info\Support\InfoProvider;
 
 class ClientInfo extends InfoProvider
 {
-	public static function slug()
-	{
-		return 'info.client';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function slug(): string
+    {
+        return 'info.client';
+    }
 
-	public static function title()
-	{
-		return 'About you';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function title(): string
+    {
+        return 'About you';
+    }
 
-	public function infos()
-	{
-		return \Larinfo::getHostIpinfo();
-	}
+    /**
+     * @inheritDoc
+     */
+    public function infos(): array
+    {
+        return \Larinfo::getHostIpinfo();
+    }
 
-	public function permission()
-	{
-		return 'view about you infos';
-	}
+    /**
+     * @inheritDoc
+     */
+    public function permission(): string
+    {
+        return 'view about you infos';
+    }
 }

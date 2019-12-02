@@ -7,27 +7,39 @@ use Pingu\User\Entities\User;
 
 class PhpInfo extends InfoProvider
 {
-	public static function slug()
-	{
-		return 'info.php';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function slug(): string
+    {
+        return 'info.php';
+    }
 
-	public static function title()
-	{
-		return 'Php';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function title(): string
+    {
+        return 'Php';
+    }
 
-	public function infos()
-	{	
-		return [
-			'Version' => phpversion(),
-			'Memory Limit' => ini_get('memory_limit'),
-			'Extensions' => get_loaded_extensions()
-		];
-	}
+    /**
+     * @inheritDoc
+     */
+    public function infos(): array
+    {   
+        return [
+            'Version' => phpversion(),
+            'Memory Limit' => ini_get('memory_limit'),
+            'Extensions' => get_loaded_extensions()
+        ];
+    }
 
-	public function permission()
-	{
-		return 'view php infos';
-	}
+    /**
+     * @inheritDoc
+     */
+    public function permission(): string
+    {
+        return 'view php infos';
+    }
 }

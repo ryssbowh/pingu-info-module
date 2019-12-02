@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "matriphe/larinfo": "^1.0"
+        "matriphe/larinfo": "^2.0"
     },
     "autoload": {
         "psr-4": {

@@ -6,23 +6,35 @@ use Pingu\Info\Support\InfoProvider;
 
 class ServerInfo extends InfoProvider
 {
-	public static function slug()
-	{
-		return 'info.server';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function slug(): string
+    {
+        return 'info.server';
+    }
 
-	public static function title()
-	{
-		return 'Server';
-	}
+    /**
+     * @inheritDoc
+     */
+    public static function title(): string
+    {
+        return 'Server';
+    }
 
-	public function infos()
-	{
-		return \Larinfo::getServerInfo();
-	}
+    /**
+     * @inheritDoc
+     */
+    public function infos(): array
+    {
+        return \Larinfo::getServerInfo();
+    }
 
-	public function permission()
-	{
-		return 'view server infos';
-	}
+    /**
+     * @inheritDoc
+     */
+    public function permission(): string
+    {
+        return 'view server infos';
+    }
 }
