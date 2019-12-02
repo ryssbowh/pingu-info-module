@@ -2,6 +2,7 @@
 
 namespace Pingu\Infos;
 
+use Illuminate\Support\Arr;
 use Pingu\Info\Support\InfoProvider;
 
 class Infos
@@ -103,11 +104,11 @@ class Infos
      * @param  mixed $providersSlugs
      * @return array
      */
-    public function getInfos($providersSlugs = [])
+    public function getInfos($providersSlugs)
     {
-        $providers = $this->getProviders($providersSlugs);
+        $providers = $this->getProviders(Arr::wrap($providersSlugs));
 
-        foreach($providers as $provider){
+        foreach ($providers as $provider) {
             $out[] = [
                 'title' => $provider::title(),
                 'infos' => $provider->infos()

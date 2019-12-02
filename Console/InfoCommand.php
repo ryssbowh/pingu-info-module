@@ -30,11 +30,28 @@ class InfoCommand extends Command
     public function handle()
     {
         $slugs = [];
-        foreach(\Infos::getProviderSlugs() as $slug){
-            if($this->option($slug)) $slugs[] = $slug;
+        foreach (\Infos::getProviderSlugs() as $slug) {
+            if ($this->option($slug)) {
+                $slugs[] = $slug;
+            }
         }
-        $infos = \Infos::getInfos($slugs);
-        $this->printInfos($infos);
+        if (!$slugs) {
+            $slugs = \Infos::getProviderSlugs();
+        }
+
+        foreach ($slugs as $slug) {
+            try {
+                $infos = \Infos::getInfos($slug);
+                $this->printInfos($infos);
+            } catch (\Exception $e) {
+                $this->printError($slug);
+            }
+        }
+    }
+
+    protected function printError($slug)
+    {
+        $this->error("Unable to print infos for $slug");
     }
 
     /**
