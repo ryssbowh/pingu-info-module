@@ -26,9 +26,11 @@ class ProvidersServiceProvider extends ServiceProvider
     public function register()
     {
         foreach($this->provides as $class){
-            $this->app->singleton($class, function($app) use ($class){
-                return new $class;
-            });
+            $this->app->singleton(
+                $class, function ($app) use ($class) {
+                    return new $class;
+                }
+            );
         }
         
     }

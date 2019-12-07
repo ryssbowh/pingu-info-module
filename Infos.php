@@ -23,11 +23,12 @@ class Infos
 
     /**
      * Registers a provider
-     * @param  string $provider class name
+     *
+     * @param string $provider class name
      */
     public function registerProvider(string $provider)
     {
-        if(!in_array($provider, $this->providers)){
+        if(!in_array($provider, $this->providers)) {
             $this->providers[] = $provider;
         }
     }
@@ -39,10 +40,12 @@ class Infos
      */
     protected function resolveProviders()
     {
-        if(!$this->resolvedProviders){
-            $this->resolvedProviders = array_map(function($provider){
-                return $this->resolveProvider($provider);
-            }, $this->providers);
+        if(!$this->resolvedProviders) {
+            $this->resolvedProviders = array_map(
+                function ($provider) {
+                    return $this->resolveProvider($provider);
+                }, $this->providers
+            );
         }
 
         return $this->resolvedProviders;
@@ -66,9 +69,11 @@ class Infos
      */
     public function getProviderSlugs()
     {
-        $out = array_map(function($provider){
-            return $provider::slug();
-        }, $this->resolveProviders());
+        $out = array_map(
+            function ($provider) {
+                return $provider::slug();
+            }, $this->resolveProviders()
+        );
 
         return array_unique($out);
     }
@@ -83,18 +88,22 @@ class Infos
     public function getProviders($providersSlugs = [])
     {
         $slugs = $this->getProviderSlugs();
-        if(empty($providersSlugs)){
+        if(empty($providersSlugs)) {
             $providersSlugs = $slugs;
         }
-        elseif(!is_array($providersSlugs)){
+        elseif(!is_array($providersSlugs)) {
             $providersSlugs = [$providersSlugs];
         }
         
-        return array_filter($this->resolveProviders(), function($provider) use ($providersSlugs){
-            if(!in_array($provider::slug(), $providersSlugs)) return false;
-            if(app()->runningInConsole()) return true;
-            return $provider->resolvePermission();
-        });
+        return array_filter(
+            $this->resolveProviders(), function ($provider) use ($providersSlugs) {
+                if(!in_array($provider::slug(), $providersSlugs)) { return false;
+                }
+                if(app()->runningInConsole()) { return true;
+                }
+                return $provider->resolvePermission();
+            }
+        );
     }
 
     /**

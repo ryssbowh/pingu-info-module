@@ -24,14 +24,16 @@ class S2019_08_11_203653549341_InstallInfo extends MigratableSeeder
         Permission::create(['name' => 'view php infos', 'section' => 'Info']);
         Permission::create(['name' => 'view about you infos', 'section' => 'Info']);
         
-        $menuItem = MenuItem::create([
+        $menuItem = MenuItem::create(
+            [
             'name' => 'Info',
             'weight' => 100,
             'active' => 1,
             'deletable' => false,
             'url' => 'info.admin.info',
             'permission_id' => $perm->id
-        ], $admin);
+            ], $admin
+        );
     }
 
     /**
@@ -39,25 +41,25 @@ class S2019_08_11_203653549341_InstallInfo extends MigratableSeeder
      */
     public function down(): void
     {
-        if($perm = Permission::where(['name' => 'view infos'])->first()){
+        if($perm = Permission::where(['name' => 'view infos'])->first()) {
             $perm->delete();
         }
-        if($perm = Permission::where(['name' => 'view server infos'])->first()){
+        if($perm = Permission::where(['name' => 'view server infos'])->first()) {
             $perm->delete();
         }
-        if($perm = Permission::where(['name' => 'view site infos'])->first()){
+        if($perm = Permission::where(['name' => 'view site infos'])->first()) {
             $perm->delete();
         }
-        if($perm = Permission::where(['name' => 'view database infos'])->first()){
+        if($perm = Permission::where(['name' => 'view database infos'])->first()) {
             $perm->delete();
         }
-        if($perm = Permission::where(['name' => 'view php infos'])->first()){
+        if($perm = Permission::where(['name' => 'view php infos'])->first()) {
             $perm->delete();
         }
-        if($perm = Permission::where(['name' => 'view about you infos'])->first()){
+        if($perm = Permission::where(['name' => 'view about you infos'])->first()) {
             $perm->delete();
         }
-        if($item = MenuItem::where('machineName', 'admin-menu.info')->first()){
+        if($item = MenuItem::where('machineName', 'admin-menu.info')->first()) {
             $item->delete();
         }
     }

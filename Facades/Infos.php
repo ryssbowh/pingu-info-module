@@ -3,12 +3,14 @@ namespace Pingu\Infos\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Infos extends Facade {
+class Infos extends Facade
+{
 
-	protected static function getFacadeAccessor() {
+    protected static function getFacadeAccessor()
+    {
 
-		return 'infos';
+        return 'infos';
 
-	}
+    }
 
 }

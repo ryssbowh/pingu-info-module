@@ -99,7 +99,7 @@ class InfoCommand extends Command
     /**
      * Prints an array of infos for several providers
      * 
-     * @param  array  $infos
+     * @param array $infos
      */
     protected function printInfos(array $infos)
     {

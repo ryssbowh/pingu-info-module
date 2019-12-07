@@ -39,7 +39,8 @@ abstract class InfoProvider
      */
     public function resolvePermission(): bool
     {
-        if(!$this->permission()) return true;
+        if(!$this->permission()) { return true;
+        }
         return \Auth::user()->can($this->permission());
     }
 
@@ -50,9 +51,11 @@ abstract class InfoProvider
      */
     public function render()
     {
-        return view('info::provider')->with([
+        return view('info::provider')->with(
+            [
             'infos' => $this->infos(),
             'slug' => $this::slug()
-        ])->render();
+            ]
+        )->render();
     }
 }
