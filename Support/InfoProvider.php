@@ -39,9 +39,10 @@ abstract class InfoProvider
      */
     public function resolvePermission(): bool
     {
-        if(!$this->permission()) { return true;
+        if(!$this->permission()) { 
+            return true;
         }
-        return \Auth::user()->can($this->permission());
+        return \Auth::user()->hasPermissionTo($this->permission());
     }
 
     /**

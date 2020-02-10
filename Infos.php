@@ -97,9 +97,11 @@ class Infos
         
         return array_filter(
             $this->resolveProviders(), function ($provider) use ($providersSlugs) {
-                if(!in_array($provider::slug(), $providersSlugs)) { return false;
+                if(!in_array($provider::slug(), $providersSlugs)) { 
+                    return false;
                 }
-                if(app()->runningInConsole()) { return true;
+                if(app()->runningInConsole()) { 
+                    return true;
                 }
                 return $provider->resolvePermission();
             }

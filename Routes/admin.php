@@ -13,4 +13,4 @@
 
 Route::get('infos', ['uses' => 'InfoController@index'])
     ->name('info.admin.info')
-    ->middleware('can:view infos');
+    ->middleware('permission:view infos');
