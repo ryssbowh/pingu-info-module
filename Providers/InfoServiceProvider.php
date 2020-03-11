@@ -21,7 +21,7 @@ class InfoServiceProvider extends ModuleServiceProvider
     public function boot()
     {
         $this->registerProviders();
-        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'info');
+        $this->loadModuleViewsFrom(__DIR__ . '/../Resources/views', 'info');
     }
 
     public function registerProviders()

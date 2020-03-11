@@ -52,7 +52,7 @@ abstract class InfoProvider
      */
     public function render()
     {
-        return view('info::provider')->with(
+        return view('info@provider')->with(
             [
             'infos' => $this->infos(),
             'slug' => $this::slug()

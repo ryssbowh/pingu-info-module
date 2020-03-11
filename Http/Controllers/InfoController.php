@@ -13,7 +13,7 @@ class InfoController extends BaseController
      */
     public function index()
     {
-        return view('info::index')->with(
+        return view('info@index')->with(
             [
             'providers' => \Infos::getProviders()
             ]
